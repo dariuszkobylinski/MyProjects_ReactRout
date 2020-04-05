@@ -4,8 +4,28 @@ import "../main.scss";
 import "../js/slider_manager";
 import "../js/main";
 import "../normalize.css";
+import {
+    HashRouter,
+    Route,
+    Link,
+    Switch,
+    NavLink,
+} from 'react-router-dom';
+
+function App() {
+    return (
+        <HashRouter>
+            <Switch>
+                <Route exact path="/" component={Header}></Route>
+                <Route path="/:service" component={ServiceInfo}></Route>
+                <Route component={NotFound}></Route>
+            </Switch>
+        </HashRouter>
+    )
+}
 
 const Header = () => {
+    $(".classLinkHref").eq(0).css("color", "darkorange");
     return (
         <header className="page-header">
             <div className="main-header">
@@ -52,24 +72,160 @@ const Header = () => {
                     <div className="burger_line"></div>
                 </div>
                 <ul className="classItem">
-                    <li className="classLink">
-                        <a href="../O_Nas.html" className="classLinkHref" target="_parent">O Nas</a>
+                    <li className="classLink" ><NavLink to="/O Nas">O Nas
+                        {/*<a href="../O_Nas.html"
+                        <a className="classLinkHref"
+                        // target="_parent">O Nas</a>*/}
+                    </NavLink>
+                    </li>
+                    <li className="classLink"><NavLink to="/Oferta">
+                        <a className="classLinkHref" id="keyPageWord"
+                           >Oferta
+                        </a>
+                    </NavLink>
                     </li>
                     <li className="classLink">
-                        <a href="../index.html" className="classLinkHref" id="keyPageWord"
-                           target="_parent">Oferta</a>
+                        <a className="classLinkHref">Cennik</a>
                     </li>
                     <li className="classLink">
-                        <a href="../cennik.html" className="classLinkHref" target="_parent">Cennik</a>
-                    </li>
-                    <li className="classLink">
-                        <a href="../Dane_firmy.html" className="classLinkHref" target="_parent" style={{color:"darkorange"}}>Kontakt</a>
+                        <a
+                            // href="../Dane_firmy.html"
+                            className="classLinkHref"
+                            // target="_parent" style={{color:"darkorange"}}
+                        >
+                            Kontakt
+                        </a>
                     </li>
                 </ul>
             </nav>
         </header>
         )
 };
+const Main = () => {
+    return (
+        <div className="main">
+            <article className="info">
+                <h2 className="h2Text">Lorem ipsum dolor sit amet.</h2>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, commodi consectetur, dignissimos
+                eius et
+                facere iste modi natus officia provident quas quos sed sint. Aperiam necessitatibus nulla
+                repudiandae unde
+                vitae voluptates. A aliquam amet aperiam at consequatur culpa, cum cumque debitis dicta
+                dignissimos
+                doloribus eaque exercitationem fuga iure laudantium maiores minus molestias nam nobis non
+                nostrum numquam
+                pariatur porro quae quaerat quidem quod quos recusandae reprehenderit repudiandae sed similique
+                sunt totam
+                unde velit voluptas voluptates! Alias explicabo hic placeat quisquam quod vel voluptas. Illum
+                maiores
+                mollitia possimus quo sint. Aperiam asperiores, distinctio doloremque eius eligendi error minus
+                quibusdam
+                similique voluptatibus!
+            </article>
+            <article className="info">
+                <h2 className="h2Text">Lorem ipsum dolor sit amet.</h2>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque deleniti facere ipsum iure
+                obcaecati
+                officiis quas reiciendis sapiente! Accusamus blanditiis commodi, consectetur eos error harum
+                ipsum, maxime
+                necessitatibus, nobis possimus quasi sed voluptate voluptatem? Aspernatur aut, cumque doloremque
+                dolores
+                facere, fugiat iure non officia optio pariatur, porro quasi quibusdam quo ratione reiciendis sed
+                sunt
+                voluptatibus voluptatum. Ad aliquam autem cum cupiditate, delectus dolorem, enim fugiat id in
+                iure labore
+                laborum nostrum porro, quae quam qui quisquam repellendus repudiandae unde voluptatem. Molestiae
+                mollitia
+                repellendus sunt vitae? A aliquam aliquid architecto commodi dolor dolorem enim, illo in magni
+                nam, non
+                quae, quos!
+            </article>
+            <article className="info">
+                <h2 className="h2Text">Lorem ipsum dolor sit amet.</h2>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, architecto atque
+                consequuntur cum,
+                deleniti dolorem eaque esse et eum fugiat ipsum laudantium necessitatibus neque numquam odio
+                omnis
+                perspiciatis placeat quo veniam veritatis. Ab accusamus aliquam aperiam delectus dolore dolores
+                eveniet
+                exercitationem, fugiat ipsum iste molestiae neque non officia omnis, pariatur possimus quaerat
+                quas
+                quibusdam quo quos reiciendis sit unde voluptatibus. Fugiat perferendis repudiandae unde.
+                Aliquid aperiam
+                aut beatae consectetur cum, illum libero, maiores maxime modi neque non placeat praesentium
+                quibusdam
+                recusandae repellendus reprehenderit sunt vel voluptas! Accusantium ad animi architecto cumque
+                iste itaque
+                nam odit praesentium quo rem rerum, tempora?
+            </article>
+            <article className="info">
+                <h2 className="h2Text">Lorem ipsum dolor sit amet.</h2>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, assumenda delectus dolor
+                doloremque expedita
+                facere id ipsum laudantium libero minima, nesciunt nisi quo repellendus sunt veritatis. Animi
+                blanditiis
+                eligendi neque perferendis recusandae sed tempora. Autem beatae blanditiis, commodi dolorum
+                facere
+                laboriosam magnam minus modi molestias nam nesciunt nihil obcaecati officiis. Consectetur
+                cupiditate error
+                illum iure iusto molestiae, molestias nemo odio optio quae quam recusandae repudiandae,
+                similique sint
+                velit! Adipisci amet aut delectus dignissimos ducimus error et eveniet illo in iste, iusto
+                maxime minima
+                modi natus numquam officia pariatur perferendis placeat quas quibusdam quos ratione
+                reprehenderit similique
+                temporibus ullam vel voluptatem.
+            </article>
+        </div>
+    )
+};
+function ServiceInfo(props) {
+
+    if (props.match.params.service==="O Nas") {
+
+        $(".classLinkHref").eq(0).css("color", "darkorange");
+
+        return  (
+            <>
+                <Header/>
+                <Footer/>
+            </>
+        )
+    }
+    else {
+        if (props.match.params.service === "Oferta") {
+            return (
+                <>
+                    <div className="container">
+                        <Header />
+                        <Main />
+
+                        <footer className="page-footer">
+                            <ContactForm />
+                            <Footer />
+                        </footer>
+                    </div>
+                </>
+            )
+        } else {
+            return <NotFound/>
+        }
+    }
+}
+function NotFound() {
+    return <NavLink to="/">Powrót do strony głównej</NavLink>
+}
+// function Main() {
+//     return (
+//         <>
+//             <ul>
+//                 <li><NavLink to="service/www"></NavLink></li>
+//                 <li><NavLink to="service/shop">Shop</NavLink></li>
+//                 <li><NavLink to="service/seo">SEO</NavLink></li>
+//             </ul>
+//         </>
+//     )
+// }
 
 class Footer extends React.Component {
 // const Footer = () => {
@@ -213,20 +369,20 @@ const ContactForm = () => {
             </form>
     )
 };
-function App() {
-    return (
-        <>
-            <div className="container">
-                <Header />
-
-            <footer className="page-footer">
-                <ContactForm />
-                <Footer />
-            </footer>
-            </div>
-        </>
-    )
-}
+// function App() {
+//     return (
+//         <>
+//             <div className="container">
+//                 <Header />
+//
+//             <footer className="page-footer">
+//                 <ContactForm />
+//                 <Footer />
+//             </footer>
+//             </div>
+//         </>
+//     )
+// }
 ReactDOM.render(
     <App />,
     document.getElementById("app")
