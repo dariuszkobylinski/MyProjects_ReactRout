@@ -1,7 +1,7 @@
 import React,{Component, useState, useEffect} from "react";
 import ReactDOM from "react-dom";
 import "../main.scss";
-import "../js/slider_manager";
+// import "../js/slider_manager";
 import "../js/main";
 import "../normalize.css";
 import {
@@ -11,7 +11,6 @@ import {
     Switch,
     NavLink,
 } from 'react-router-dom';
-
 
 function App() {
     return (
@@ -23,14 +22,23 @@ function App() {
             </Switch>
         </HashRouter>
     );
-
 }
 const MyReload = ()=> {
     window.location.reload();
 }
 
+const MainPricing = () => {
+    return (
+        <div className="mainPricing" style={{padding:"0px"}}>
+            <article className="info_Pricing">
+                <h2 className="h2Text" style={{padding:"10px", display:"none"}}>Lorem ipsum dolor sit amet.</h2>
+                <img className="classPricing" src="images/pricing.png"/>
+            </article>
+        </div>
+    )
+};
+
 const SliderManager = () => {
-    
     document.addEventListener("DOMContentLoaded", (e) => {
         e.preventDefault();
             let mySlider = document.querySelectorAll(".box_image_slider");
@@ -38,40 +46,10 @@ const SliderManager = () => {
             mySliderText[0].style.visibility="visible";
             mySliderText[4].style.visibility="visible";
             console.log(mySliderText,mySlider);
-          
-
-
-
-            // console.log(mySlider);
-            // class TESTS extends React.Component {
-            //     constructor() {
-            //         super();
-            //         this.state={
-            //             visibility:"visible",
-            //             counter:0
-            //         }
-            //     }
-            //     componentDidMount() {
-            //         mySliderText[0].style.visibility= "visible";
-            //         mySliderText[4].style.visibility= this.state.visibility;
-            //     }
-            //     componentDidUpdate(prevProps, prevState, snapshot) {
-            //         console.log("update");
-            //         console.log(mySliderText);
-            //     }
-            // }
-
-
-
 
             let counter = 0;
         
-             setInterval(() => {
-            console.log(counter);
-            console.log(mySlider);
-            console.log(mySliderText);
-            // window.location.reload();
-
+            setInterval(() => {
 
             if (counter <= mySlider.length / 2 - 2) {
                 counter = counter + 1;
@@ -98,19 +76,55 @@ const SliderManager = () => {
                 mySliderText[0].style.visibility = "visible";
                 mySliderText[mySliderText.length / 2 + 4 - 1].style.visibility = "hidden";
                 mySliderText[4].style.visibility = "visible";
-        
-        
             };
-            // window.location.reload();
         }, 4000);
 
-})};
+        let myAdvertising = document.querySelectorAll(".box_image_advertising");
+        let myAdvertisingText = document.querySelectorAll(".advertisingText");
+
+        myAdvertisingText[0].style.visibility = "visible";
+        myAdvertisingText[4].style.visibility = "visible";
+
+        let counter_advertising = 0;
+        setInterval(() => {
+
+            if (counter_advertising <= myAdvertising.length / 2 - 2) {
+                counter_advertising = counter_advertising + 1;
+                myAdvertising[counter_advertising - 1].classList.toggle("visible");
+                myAdvertising[counter_advertising].classList.toggle("visible");
+
+                myAdvertising[counter_advertising + 4 - 1].classList.toggle("visible");
+                myAdvertising[counter_advertising + 4].classList.toggle("visible");
+
+                myAdvertisingText[counter_advertising - 1].style.visibility = "hidden";
+                myAdvertisingText[counter_advertising].style.visibility = "visible";
+
+                myAdvertisingText[counter_advertising + 4 - 1].style.visibility = "hidden";
+                myAdvertisingText[counter_advertising + 4].style.visibility = "visible";
+
+            } else {
+                counter_advertising = 0;
+                myAdvertising[myAdvertising.length / 2 - 1].classList.toggle("visible");
+                myAdvertising[myAdvertising.length / 2 + 4 - 1].classList.toggle("visible");
+                myAdvertising[0].classList.toggle("visible");
+                myAdvertising[4].classList.toggle("visible");
+
+                myAdvertisingText[myAdvertisingText.length / 2 - 1].style.visibility = "hidden";
+                myAdvertisingText[0].style.visibility = "visible";
+                myAdvertisingText[myAdvertisingText.length / 2 + 4 - 1].style.visibility = "hidden";
+                myAdvertisingText[4].style.visibility = "visible";
+
+
+            }
+            console.log(counter_advertising);
+        }, 4000);
+
+});
+};
 
         const Header = () => {
-            // $(".classLinkHref").eq(0).css("color", "darkorange");
             
             SliderManager();
-            location = self.location;
             return (
                 <header className="page-header">
                     <div className="main-header">
@@ -125,7 +139,7 @@ const SliderManager = () => {
                                 <img className="box_image_slider" src={"images/coding.jpg"} alt="Slider"/>
                                 <img className="box_image_slider" src={"images/development_1.jpg"} alt="Slider"/>
                                 <img className="box_image_slider" src={"images/cooperation.jpg"} alt="Slider"/>
-                                <p className="sliderText_left" style={{visibility:"visible"}}>aaaaaaaa</p>
+                                <p className="sliderText_left">aaaaaaaa</p>
                                 <p className="sliderText_left">bbbbbbbb</p>
                                 <p className="sliderText_left">cccccccc</p>
                                 <p className="sliderText_left">dddddddd</p>
@@ -135,7 +149,7 @@ const SliderManager = () => {
                                 <img className="box_image_slider" src={"images/development_1.jpg"} alt="Slider"/>
                                 <img className="box_image_slider" src={"images/cooperation.jpg"} alt="Slider"/>
                                 <img className="box_image_slider" src={"images/intelligence.jpg"} alt="Slider"/>
-                                <p className="sliderText_left" style={{visibility:"visible"}}>bbbbbbbb</p>
+                                <p className="sliderText_left">bbbbbbbb</p>
                                 <p className="sliderText_left">cccccccc</p>
                                 <p className="sliderText_left">dddddddd</p>
                                 <p className="sliderText_left">aaaaaaaa</p>
@@ -158,11 +172,11 @@ const SliderManager = () => {
                         </div>
                         <ul className="classItem">
 
-                            <li className="classLink" onClick={MyReload} ><NavLink to="/O Nas" className="classLinkHref">
+                            <li className="classLink" onClick={MyReload}><NavLink to="/O Nas" className="classLinkHref">
                                 O Nas
                             </NavLink>
                             </li>
-                            <li className="classLink" onClick={MyReload}><NavLink to="/" className="classLinkHref" style={{color:"darkorange"}}>
+                            <li className="classLink" onLoad={SliderManager} onClick={MyReload}><NavLink to="/" className="classLinkHref" style={{color:"darkorange"}}>
                                 Oferta
                             </NavLink>
                             </li>
@@ -172,7 +186,7 @@ const SliderManager = () => {
                             </NavLink>
                             </li>
 
-                            <li className="classLink"><NavLink to="/Kontakt" className="classLinkHref">
+                            <li className="classLink" onClick={MyReload}><NavLink to="/Kontakt" className="classLinkHref">
                                 Kontakt
                             </NavLink>
                             </li>
@@ -183,6 +197,7 @@ const SliderManager = () => {
         };
 
         const Main_index = () => {
+            // $(".classLinkHref").eq(0).css("color", "darkorange");
                 // window.location.href;
                 return (
                     <div className="container">
@@ -190,7 +205,7 @@ const SliderManager = () => {
                         <Main/>
                         <footer className="page-footer">
                             <ContactForm/>
-                            <Footer/>
+                            <FooterRight/>
                         </footer>
                     </div>
                 );
@@ -276,8 +291,17 @@ const SliderManager = () => {
         };
 
         function ServiceInfo(props) {
-            // console.log(props);
+            
             if (props.match.params.service==="O Nas") {
+                $(document).ready(function() {
+                
+                    // $(this).css("color", "darkorange");
+                    $(".classLinkHref").css("color", "black");
+                $(".classLinkHref").eq(0).css("color", "darkorange");
+            })
+                // this.MyColorNavLoad();
+                
+                // $(".classLinkHref").eq(0).css("color", "darkorange");
                 // console.log(props);
                 // console.log(window.location.href)
                 // location.href="http://localhost:9999/O%20Nas/";
@@ -292,9 +316,10 @@ const SliderManager = () => {
                     <>
                         <div className="container">
                             <Header />
+                            <MainONas/>
                             <footer className="page-footer">
-                                <ContactForm />
-                                <Footer />
+                                <ContactForm/>
+                                <FooterRight />
                             </footer>
                         </div>
                     </>
@@ -302,14 +327,59 @@ const SliderManager = () => {
             }
             else {
                 if (props.match.params.service === "/") {
-                    // console.log(window.location);
-                    // SliderManager();
+                    $(document).ready(function() {
+                    $(".classLinkHref").css("color", "black");
+                    $(".classLinkHref").eq(1).css("color", "darkorange");
+                })
                     return (
                         <>
                         <Main_index/>
                         </>
                     )
-                } else {
+                } else
+                        {
+                            if (props.match.params.service==="Cennik") {
+                                $(document).ready(function() {
+                                $(".classLinkHref").css("color", "black");
+                                $(".classLinkHref").eq(2).css("color", "darkorange");
+                            })
+                                return  (
+                                    <>
+                                        <div className="container">
+                                            <Header />
+                                            <MainPricing/>
+                                            <footer className="page-footer">
+                                                <ContactForm/>
+                                                <FooterRight />
+                                            </footer>
+                                        </div>
+                                    </>
+                                );
+                            }
+                            else {
+                            if (props.match.params.service==="Kontakt") {
+                                $(document).ready(function() {
+                                    $(".classLinkHref").css("color", "black");
+                                $(".classLinkHref").eq(3).css("color", "darkorange");
+                            })
+                                return  (
+                                    <>
+                                        <div className="container">
+                                            <Header />
+                                            <footer className="page-footer">
+                                                <ContactForm/>
+                                                <Footer />
+                                            </footer>
+                                        </div>
+                                    </>
+                                );
+                            }
+                        }
+                        }
+                
+                
+                {
+
                     return <NotFound/>
                 }
             }
@@ -393,6 +463,69 @@ const SliderManager = () => {
             }
         };
 
+        const FooterRight = () => {
+            return (
+                <>
+                    <div className="page-link-social">
+                        <h3 className="h3TextRight">Chcesz zdobyć nowe umiejętności? Skorzystaj z
+                            wyjątkowych ofert kursów i rejsów żeglarskich</h3>
+                        <a href="https://www.e-market.edu.pl" target="_blank">
+                            <div className="classAdvertising">
+                                <div className="classAdvertising_left">
+                                    <img className="box_image_advertising visible"
+                                         src={"images/sternik_motorowodny_adwords.png"} alt="Slider"/>
+                                    <img className="box_image_advertising" src={"images/family_wynik_adwords.png"}
+                                         alt="Slider"/>
+                                    <img className="box_image_advertising"
+                                         src={"images/żeglarz_jachtowy_adwords.png"} alt="Slider"/>
+                                    <img className="box_image_advertising"
+                                         src={"images/obozy_wodne_adwords.png"} alt="Slider"/>
+                                    <p className="advertisingText"></p>
+                                    <p className="advertisingText"></p>
+                                    <p className="advertisingText"></p>
+                                    <p className="advertisingText"></p>
+                                </div>
+                                <div className="classAdvertising_right">
+                                    <img className="box_image_advertising visible" src={"images/family_wynik_adwords.png"}
+                                         alt="Slider"/>
+                                    <img className="box_image_advertising" src={"images/żeglarz_jachtowy_adwords.png"}
+                                         alt="Slider"/>
+                                    <img className="box_image_advertising" src={"images/obozy_wodne_adwords.png"}
+                                         alt="Slider"/>
+                                    <img className="box_image_advertising"
+                                         src={"images/sternik_motorowodny_adwords.png"} alt="Slider"/>
+                                    <p className="advertisingText"></p>
+                                    <p className="advertisingText"></p>
+                                    <p className="advertisingText"></p>
+                                    <p className="advertisingText"></p>
+                                </div>
+                            </div>
+                        </a>
+                        <div className="classSocialLink">
+                            <a href="http://www.facebook.com">
+                                <div className="classSocialLinkFacebook"></div>
+                            </a>
+                            <a href="http://www.youtube.com">
+                                <div className="classSocialLinkYouTube"></div>
+                            </a>
+                            <a href="http://www.instagram.com">
+                                <div className="classSocialLinkInstagram"></div>
+                            </a>
+                            <a href="http://www.twitter.com">
+                                <div className="classSocialLinkYouTwitter"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div className="footer_summary">
+                        <div className="classLogoFooter">Copyright ©2019 MD Projects. Wszelkie prawa zastrzeżone</div>
+                        <div className="classLogoFooter">Logo generated by <a
+                            href="https://www.designevo.com/logo-maker/" title="Free Online Logo Maker">DesignEvo
+                            free logo designer</a></div>
+                    </div>
+                </>
+        
+            )
+        };
         const ContactForm = () => {
             const [formData, setFormData] = useState({
                 imienazwisko: "",
@@ -456,6 +589,25 @@ const SliderManager = () => {
                         }
                     </ul>
                 </form>
+            )
+        };
+        const MainONas = () => {
+            return (
+                <div className="mainONas">
+                    <article className="info_ONas">
+                        <h2 className="h2Text" style={{margin:"10px 0px"}}>Lorem ipsum dolor sit amet.</h2>
+                        <img className="box_image_ONas" src="images/people.jpg" alt="Slider"/>
+                            <p className="pClassONas">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, commodi
+                                consectetur, dignissimos eius et facere iste modi natus officia provident quas quos sed sint.
+                                Aperiam necessitatibus nulla repudiandae unde vitae voluptates. A aliquam amet aperiam at
+                                consequatur culpa, cum cumque debitis dicta dignissimos doloribus eaque exercitationem fuga iure
+                                laudantium maiores minus molestias nam nobis non nostrum numquam pariatur porro quae quaerat
+                                quidem quod quos recusandae reprehenderit repudiandae sed similique sunt totam unde velit
+                                voluptas voluptates! Alias explicabo hic placeat quisquam quod vel voluptas. Illum maiores
+                                mollitia possimus quo sint. Aperiam asperiores, distinctio doloremque eius eligendi error minus
+                                quibusdam similique voluptatibus!</p>
+                    </article>
+                </div>
             )
         };
 // function App() {
